@@ -1,0 +1,42 @@
+[
+  {
+    "body": "Hi, this is Sid from Seattle! Is this {{first_name}}?",
+    "sid": "YOUR_CONTENT_TEMPLATE_SID_1"
+  },
+  {
+    "body": "Howdy {{first_name}}, my name is Mark and my agents showed me your property at {{address}}. We are very interested, would you be open to chatting about it?",
+    "sid": "YOUR_CONTENT_TEMPLATE_SID_2"
+  },
+  {
+    "body": "Hey is this {{first_name}} {{last_name}} from {{city}}?",
+    "sid": "YOUR_CONTENT_TEMPLATE_SID_3"
+  },
+  {
+    "body": "Howdy {{first_name}} {{last_name}}, I'm a local landlord in {{city}} and would love to chat about your property at {{address}} sometime if you're interested.",
+    "sid": "YOUR_CONTENT_TEMPLATE_SID_4"
+  },
+  {
+    "body": "Hey {{first_name}}, My name is Mark and our acquisitions team is very interested in your property at {{address}}. Do you have a moment to chat about it?",
+    "sid": "YOUR_CONTENT_TEMPLATE_SID_5"
+  },
+  {
+    "body": "Hey are you interested in selling your property at {{address}}?",
+    "sid": "YOUR_CONTENT_TEMPLATE_SID_6"
+  },
+  {
+    "body": "Hi, this is Mark. I'm a real estate investor in {{city}}. This is {{first_name}} correct?",
+    "sid": "YOUR_CONTENT_TEMPLATE_SID_7"
+  },
+  {
+    "body": "Hey is this {{first_name}}? My name's Mark and I have selected a handful of properties in {{city}} and yours came up as one of them, would love to tell you more!",
+    "sid": "YOUR_CONTENT_TEMPLATE_SID_8"
+  },
+  {
+    "body": "Hey {{first_name}}, if you're interested, I have a great opportunity relating to your property at {{address}}!",
+    "sid": "YOUR_CONTENT_TEMPLATE_SID_9"
+  },
+  {
+    "body": "Hi {{first_name}}, do you have a moment to chat about your property in {{city}}?",
+    "sid": "YOUR_CONTENT_TEMPLATE_SID_10"
+  }
+]
