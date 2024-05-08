@@ -1,0 +1,11 @@
+# pyproject.toml
+[project]
+name = "TextBlaster"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["fastapi", "openapi", "pandas", "vonage"]
+
+[tool.pytest.ini_options]
+# rootdir = "src"
+pythonpath = ["src"]
+testpaths = ["tests"]

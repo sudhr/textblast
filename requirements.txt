@@ -1,5 +1,21 @@
-flask
-flask_restful
+# API Support
+fastapi
+
+# Misc
 pandas
 openai
 vonage
+
+# tests
+pytest
+assertpy
+httpx
+coverage
+
+# Formatting
+black
+
+# code analysis
+prospector[with_pyroma, with_vulture, with_bandit, with_pyright]
+# pyre-check
+# fb-sapp
