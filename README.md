@@ -3,7 +3,7 @@
 ## Build Instructions
 
 ```bash
-pip install -r requirements.txt
+pip install '.[test,dev]'
 
 # To run tests with coverage
 coverage run --branch -m pytest
