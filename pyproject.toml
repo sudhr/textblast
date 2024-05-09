@@ -10,19 +10,16 @@ requires-python = ">=3.12"
 description = "Text Blaster"
 version = "0.1.0"
 # dynamic = ["version", "description"]
-dependencies = ["fastapi", "openapi", "pandas", "vonage"]
+dependencies = ["fastapi", "openapi", "pandas", "vonage", "sqlalchemy"]
 
 # [tool.setuptools]
 # disable-wheel = true
 
 [project.optional-dependencies]
 test = ["pytest", "assertpy", "httpx", "coverage"]
-dev = [
-    "black",
-    # "propspector[with_pyroma, with_vulture, with_bandit, with_pyright]",
-]
+dev = ["black", "ruff"]
 
 [tool.pytest.ini_options]
-# rootdir = "src"
+# rootdir = "."
 pythonpath = ["src"]
 testpaths = ["tests"]
