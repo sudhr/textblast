@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 
 from db.database import SessionLocal, engine
-from db import crud, models, schemas
+from db import models
 
 app = FastAPI()
 router = APIRouter()

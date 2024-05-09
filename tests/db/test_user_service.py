@@ -1,7 +1,7 @@
 from assertpy import assert_that
 
-from db.database import SessionLocal, engine
-from db import crud, models, schemas
+from db.database import SessionLocal
+from db import crud
 from sqlalchemy.orm import Session
 
 
