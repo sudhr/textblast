@@ -1,11 +1,20 @@
-from db.repos import UserRepository
-
 from assertpy import assert_that
 
-# def test_insert_user(user_repo: UserRepository) -> None:
-#     user_repo.add(User(fname="testfirst", lname="testLast", phone="11234567890"))
+from db.database import SessionLocal, engine
+from db import crud, models, schemas
+from sqlalchemy.orm import Session
 
 
-def test_query_user(user_repo: UserRepository) -> None:
-    user = user_repo.get_by_id(1)
+def get_db_session():
+    sl = SessionLocal()
+    try:
+        yield sl
+    finally:
+        sl.close()
+
+
+def test_query_user(session: Session) -> None:
+    phone: str = "14252958064"
+    user = crud.get_user(session, phone)
     assert_that(user).is_not_none()
+    assert_that(user.phone).is_equal_to(phone)

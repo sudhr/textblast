@@ -16,16 +16,15 @@ class UserCreate(UserBase):
 class User(UserBase):
     class Config:
         orm_mode = True
+        # from_attributes = ("id", "fname", "lname", "phone")
 
+    # class ReachedBase(BaseModel):
+    #     id: int
+    #     user_id: int
+    #     timestamp: datetime
 
-class ReachedBase(BaseModel):
-    id: int
-    user_id: int
-    timestamp: datetime
+    #     class Config:
+    #         orm_mode = True
 
-    class Config:
-        orm_mode = True
-
-
-class ReachedCreate(ReachedBase):
-    pass
+    # class ReachedCreate(ReachedBase):
+    # pass

@@ -1,12 +1,10 @@
-from contextlib import AbstractContextManager
-from typing import Callable
+import pytest
+from typing import Generator, TypeVar
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
-import pytest
 
-from db.database import Database
-from db.repos import UserRepository
-from db.services import UserService
+from db.database import SessionLocal, engine
+from db import models
 from webhook import app
 
 
@@ -15,9 +13,21 @@ def client():
     return TestClient(app)
 
 
+T = TypeVar("T")
+YieldFixture = Generator[T, None, None]
+
 #
 # Database fixtures
 #
+
+models.Base.metadata.create_all(bind=engine)
+
+
+@pytest.fixture
+def session() -> YieldFixture[Session]:
+    sl = SessionLocal()
+    with sl as session:
+        yield session
 
 
 @pytest.fixture

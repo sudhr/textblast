@@ -10,10 +10,10 @@ from db import crud, models, schemas
 
 app = FastAPI()
 router = APIRouter()
+models.Base.metadata.create_all(bind=engine)
+
 
 StrictMSISDN = Annotated[str, Strict()]
-
-models.Base.metadata.create_all(bind=engine)
 
 
 # Depenendency injection
@@ -35,10 +35,10 @@ class SMS(BaseModel):
 
 @router.post("/webhook")
 async def webhook(sms: SMS, session: Session = Depends(get_db_session)):
-    user: models.User = crud.get_user(session, sms.msisdn)
-    crud.create_reached(
-        session, schemas.ReachedCreate(user.id, timestamp=sms.timestamp)
-    )
+    # user: models.User = crud.get_user(session, sms.msisdn)
+    # crud.create_reached(
+    #     session, schemas.ReachedCreate(user.id, timestamp=sms.timestamp)
+    # )
     return {
         "message": "Hello, World!",
         "msisdn": sms.msisdn,
