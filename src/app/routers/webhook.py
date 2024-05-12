@@ -1,18 +1,17 @@
+from fastapi import APIRouter, Depends, Response, status
 from typing import Annotated
-from fastapi import APIRouter, Depends, FastAPI, Response, status
-from pydantic.types import Strict
-from sqlalchemy.orm import Session
-
 import db
-from .schemas import SMS
 
-app = FastAPI()
-router = APIRouter()
-
-StrictMSISDN = Annotated[str, Strict()]
+from ..schemas import SMS
 
 
-@router.post("/webhook")
+router = APIRouter(
+    prefix="/webhook",
+    tags=["webhook"],
+)
+
+
+@router.post("/")
 async def webhook(
     sms: SMS,
     user_repo: Annotated[db.UserRepository, Depends(db.UserRepository)],
@@ -35,6 +34,3 @@ async def webhook(
             "message": "User not found",
             "msisdn": sms.msisdn,
         }
-
-
-app.include_router(router)

@@ -16,6 +16,7 @@ xdg-open htmlcov/index.hml
 ```
 
 ## To run in cmdline
+
 ```bash
-fastapi dev src/webbook/app.py
+fastapi dev src/app/app.py
 ```

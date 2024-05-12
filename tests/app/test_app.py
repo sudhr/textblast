@@ -4,7 +4,7 @@ from http import HTTPStatus
 from assertpy import assert_that
 
 
-def test_webhook_valid_sms_request(client: TestClient):
+def test_app_valid_sms_request(client: TestClient):
     resp = client.post(
         "/webhook",
         json={
