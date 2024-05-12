@@ -34,7 +34,8 @@ class SMS(BaseModel):
 
 
 @router.post("/webhook")
-async def webhook(sms: SMS, session: Session = Depends(get_db_session)):
+# async def webhook(sms: SMS, session: Session = Depends(get_db_session)):
+async def webhook(sms: SMS):
     # user: models.User = crud.get_user(session, sms.msisdn)
     # crud.create_reached(
     #     session, schemas.ReachedCreate(user.id, timestamp=sms.timestamp)

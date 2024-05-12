@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 
 from db.database import SessionLocal, engine
 from db import models
+from db.repo import UserRepository
 from webhook import app
 
 
@@ -33,3 +34,8 @@ def session() -> YieldFixture[Session]:
 @pytest.fixture
 def db_conn_string() -> str:
     return "sqlite:///./data/db.sqlite3"
+
+
+@pytest.fixture
+def user_repo(session: Session) -> UserRepository:
+    return UserRepository(session)

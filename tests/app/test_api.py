@@ -4,10 +4,6 @@ from http import HTTPStatus
 from assertpy import assert_that
 
 
-def test_sms_callback():
-    pass
-
-
 def test_webhook_valid_sms_request(client: TestClient):
     resp = client.post(
         "/webhook",
