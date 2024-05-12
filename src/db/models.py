@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from .database import Base
 
 
@@ -13,12 +13,11 @@ class User(Base):
         return f"<User(id={self.id}, fname={self.fname}, lname={self.lname}, phone={self.phone})>"
 
 
-# class Reached(Base):
-#     __tablename__ = "Reached"
-#     id = Column(Integer, name="id", primary_key=True, index=True)
-#     user_id = Column(Integer, ForeignKey("Users.id"))
-#     user = relationship("User", back_populates="Reached")
-#     timestamp = Column(DateTime, name="timestamp")
+class Reached(Base):
+    __tablename__ = "Reached"
+    id = Column(Integer, name="id", primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("Users.id"))
+    timestamp = Column(DateTime, name="timestamp")
 
-#     def __repor__(self) -> str:
-#         return f"<Reached(id={self.id}, user_id={self.user_id}, timestamp={self.timestamp})>"
+    def __repor__(self) -> str:
+        return f"<Reached(id={self.id}, user_id={self.user_id}, timestamp={self.timestamp})>"

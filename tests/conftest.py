@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from db.database import SessionLocal, engine
 from db import models
-from db.repo import UserRepository
+from db.repo import ReachedRepository, UserRepository
 from webhook import app
 
 
@@ -39,3 +39,8 @@ def db_conn_string() -> str:
 @pytest.fixture
 def user_repo(session: Session) -> UserRepository:
     return UserRepository(session)
+
+
+@pytest.fixture
+def reached_repo(session: Session) -> ReachedRepository:
+    return ReachedRepository(session)
