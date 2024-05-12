@@ -28,16 +28,18 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     class Config:
-        orm_mode = True
-        # from_attributes = ("id", "fname", "lname", "phone")
+        # orm_mode = True
+        from_attributes = True
+        strip_whitespace = True
 
-    # class ReachedBase(BaseModel):
-    #     id: int
-    #     user_id: int
-    #     timestamp: datetime
 
-    #     class Config:
-    #         orm_mode = True
+# class ReachedBase(BaseModel):
+#     id: int
+#     user_id: int
+#     timestamp: datetime
 
-    # class ReachedCreate(ReachedBase):
-    # pass
+#     class Config:
+#         orm_mode = True
+
+# class ReachedCreate(ReachedBase):
+# pass

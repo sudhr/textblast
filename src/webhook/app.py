@@ -30,7 +30,7 @@ async def webhook(
             "reached_id": reached.id,
         }
     else:
-        resp.status_code = status.HTTP_400_BAD_REQUEST
+        resp.status_code = status.HTTP_422_UNPROCESSABLE_ENTITY
         return {
             "message": "User not found",
             "msisdn": sms.msisdn,
