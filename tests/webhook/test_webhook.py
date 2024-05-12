@@ -8,7 +8,7 @@ def test_webhook_valid_sms_request(client: TestClient):
     resp = client.post(
         "/webhook",
         json={
-            "msisdn": "11234567890",
+            "msisdn": "14252958064",
             "text": "Hello, World!",
             "messageID": "1234567890",
         },
