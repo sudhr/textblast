@@ -27,6 +27,7 @@ async def webhook(
             "msisdn": sms.msisdn,
             "text": sms.text,
             "message_ID": sms.messageId,
+            "reached_id": reached.id,
         }
     else:
         resp.status_code = status.HTTP_400_BAD_REQUEST
