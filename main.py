@@ -1,9 +1,6 @@
 import openai
 from flask import Flask, request
 from flask_restful import Api, Resource
-import pandas as pd
-import json
-import random
 from vonage import Client, Sms
 print("started_1")
 # Initialize the Flask application
