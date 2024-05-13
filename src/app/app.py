@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, FastAPI, Response, status
 from pydantic.types import Strict
 from sqlalchemy.orm import Session
 
-from .routers import webhook, index
+from .routers import webapp, webhook
 
 import db
 from .schemas import SMS
@@ -13,4 +13,4 @@ StrictMSISDN = Annotated[str, Strict()]
 
 # Register Routers
 app.include_router(webhook.router)
-app.include_router(index.router)
+app.include_router(webapp.router)

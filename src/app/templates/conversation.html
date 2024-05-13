@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %} Conversation {% endblock %}
+
+{% block content %}
+<h1> Conversation Lookup</h1>
+
+<form class="row g-3" action="/conversation" method="post">
+    <div class="row mb-3">
+        <label class="col-form-label col-sm-2" for="phone">Phone Number:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control-plaintext" id="phone" name="phone" placeholder="Phone Number" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
