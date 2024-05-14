@@ -23,3 +23,31 @@ ruff check --fix
 ```bash
 fastapi dev src/app/app.py
 ```
+
+## Alembic
+
+Initialize Alembic
+
+```bash
+alembic init --template generic ./alembic
+```
+
+Edit .ini to setup the connection to the database.
+
+```ini
+[alembic]
+sqlalchemy.url = postgresql://postgres:postgres@localhost:5432/postgres
+timezone = UTC
+```
+
+Create a migration script
+
+```bash
+alembic revision -m "Create user table"
+```
+
+Run the first migration
+
+```bash
+alembic upgrade head
+```
