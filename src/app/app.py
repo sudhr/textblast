@@ -1,12 +1,9 @@
 from typing import Annotated
-from fastapi import APIRouter, Depends, FastAPI, Response, status
+from fastapi import FastAPI
 from pydantic.types import Strict
-from sqlalchemy.orm import Session
 
 from .routers import webapp, webhook
 
-import db
-from .schemas import SMS
 
 app = FastAPI()
 StrictMSISDN = Annotated[str, Strict()]

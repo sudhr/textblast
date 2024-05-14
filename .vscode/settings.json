@@ -10,5 +10,7 @@
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    "ansibleVaultInline.encryptVaultId": ""
+    "ruff.format.args": [
+        "--force-exclude old/"
+    ]
 }

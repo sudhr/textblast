@@ -1,5 +1,4 @@
 from assertpy import assert_that
-from db.models import User, Reached
 from db.repo import UserRepository, ReachedRepository
 
 

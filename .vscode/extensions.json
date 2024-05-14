@@ -5,6 +5,7 @@
         "ms-python.debugpy",
         "ms-python.black-formatter",
         "njpwerner.autodocstring",
-        "wholroyd.jinja"
+        "wholroyd.jinja",
+        "charliermarsh.ruff"
     ]
 }
