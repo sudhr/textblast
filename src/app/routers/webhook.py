@@ -18,12 +18,12 @@ async def webhook(
     reached_repo: Annotated[db.ReachedRepository, Depends(db.ReachedRepository)],
     resp: Response,
 ):
-    user = user_repo.get_by_phone(sms.msisdn)
+    user = user_repo.get_by_phone(sms.phone)
     if user:
         reached = reached_repo.insert(user.id)
         return {
             "message": "Hello, World!",
-            "msisdn": sms.msisdn,
+            "msisdn": sms.phone,
             "text": sms.text,
             "message_ID": sms.messageId,
             "reached_id": reached.id,
@@ -32,5 +32,5 @@ async def webhook(
         resp.status_code = status.HTTP_422_UNPROCESSABLE_ENTITY
         return {
             "message": "User not found",
-            "msisdn": sms.msisdn,
+            "msisdn": sms.phone,
         }

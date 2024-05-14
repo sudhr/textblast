@@ -13,6 +13,9 @@ coverage html
 
 # Open in the default browser in linux
 xdg-open htmlcov/index.hml
+
+# Linting with ruff
+ruff check --fix
 ```
 
 ## To run in cmdline
