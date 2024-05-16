@@ -21,7 +21,7 @@ ruff check --fix
 ## To run in cmdline
 
 ```bash
-fastapi dev src/app/app.py
+fastapi dev src/main/app.py
 ```
 
 ## Postgres Pod

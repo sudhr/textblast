@@ -1,5 +1,8 @@
-from fastapi import APIRouter, Request
+from typing import Annotated
+from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
+
+import db
 
 router = APIRouter()
 templates = Jinja2Templates(directory="src/app/templates")
@@ -21,5 +24,15 @@ def add_user_form(request: Request):
 
 
 @router.get("/user")
-def list_users(request: Request):
-    return templates.TemplateResponse("list_users", context={"request": request})
+def list_users(
+    request: Request,
+    user_repo: Annotated[db.UserRepository, Depends(db.UserRepository)],
+):
+    users = user_repo.get_all()
+    return templates.TemplateResponse(
+        "list_users",
+        context={
+            "request": request,
+            "users": users,
+        },
+    )

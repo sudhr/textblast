@@ -13,7 +13,7 @@ def test_get_user_phone_exists(user_repo: UserRepository) -> None:
 
 
 def test_get_user_phone_does_not_exist(user_repo: UserRepository) -> None:
-    phone: str = "14255551212"
+    phone: str = "19998881212"
     user = user_repo.get_by_phone(phone)
     assert_that(user).is_none()
 
