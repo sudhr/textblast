@@ -24,6 +24,24 @@ ruff check --fix
 fastapi dev src/app/app.py
 ```
 
+## Postgres Pod
+
+Podman is used to create the local postgres database. To create a pod, run the following command:
+
+```bash
+podman kube play docker/deployment.yaml
+```
+
+To Stop the pod:
+```bash
+podman pod stop textblast
+```
+
+To start the pod:
+```bash
+podman pod start textblast
+````
+
 ## Alembic
 
 Initialize Alembic
