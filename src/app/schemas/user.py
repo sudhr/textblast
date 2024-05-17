@@ -1,16 +1,6 @@
-from dataclasses import dataclass
 from pydantic import BaseModel, Field
-from fastapi import Form
 
-
-def form_body(cls):
-    cls.__signature__ = cls.__signature__.replace(
-        parameters=[
-            arg.replace(default=Form(...))
-            for arg in cls.__signature__.parameters.values()
-        ]
-    )
-    return cls
+from .form_body import form_body
 
 
 @form_body

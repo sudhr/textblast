@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from db.database import SessionLocal, engine
 from db import models
 from db.repo import UserRepository
-from webhook import app
+from app.main import app
 
 
 @pytest.fixture

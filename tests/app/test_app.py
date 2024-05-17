@@ -3,10 +3,12 @@ import pytest
 from http import HTTPStatus
 from assertpy import assert_that
 
+WEBHOOK_URL = "/api/webhook"
+
 
 def test_app_valid_sms_request(client: TestClient):
     resp = client.post(
-        "/webhook",
+        WEBHOOK_URL,
         json={
             "msisdn": "14252958064",
             "text": "Hello, World!",
@@ -45,5 +47,5 @@ def test_app_valid_sms_request(client: TestClient):
 def test_sms_request_bad_data(
     client: TestClient, name: str, json: dict, expected_status_code: HTTPStatus
 ):
-    resp = client.post("/webhook", json=json)
+    resp = client.post(WEBHOOK_URL, json=json)
     assert_that(resp.status_code).is_equal_to(expected_status_code)

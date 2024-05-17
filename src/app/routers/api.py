@@ -6,12 +6,12 @@ from ..schemas import SMS
 
 
 router = APIRouter(
-    prefix="/webhook",
-    tags=["webhook"],
+    prefix="/api",
+    tags=["api"],
 )
 
 
-@router.post("/")
+@router.post("/webhook")
 async def webhook(
     sms: SMS,
     user_repo: Annotated[db.UserRepository, Depends(db.UserRepository)],

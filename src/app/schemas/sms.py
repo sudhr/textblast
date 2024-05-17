@@ -19,6 +19,6 @@ class SMS(BaseModel):
         BaseModel (_type_): _description_
     """
 
-    phone: str
+    phone: str = Field(alias="msisdn", min_length=11, max_length=11)
     text: str = Field(alias="text", min_length=1, max_length=250)
     messageId: str = Field(alias="messageID", min_length=5, max_length=64)

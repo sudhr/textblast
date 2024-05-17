@@ -7,7 +7,7 @@ from starlette import status
 from app.schemas import UserForm
 import db
 
-router = APIRouter()
+router = APIRouter(prefix="", tags=["webapp"])
 templates = Jinja2Templates(directory="src/app/templates")
 
 
