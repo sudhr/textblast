@@ -1,4 +1,4 @@
 from .sms import SMS
-from .user import User
+from .user import UserForm
 
-__all__ = ["SMS", "User"]
+__all__ = ["SMS", "UserForm"]

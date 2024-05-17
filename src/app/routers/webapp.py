@@ -4,6 +4,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from starlette import status
 
+from app.schemas import UserForm
 import db
 
 router = APIRouter()
@@ -28,12 +29,10 @@ def add_user_form(request: Request):
 @router.post("/user/add")
 def add_user_form_post(
     request: Request,
-    fname: Annotated[str, Form()],
-    lname: Annotated[str, Form()],
-    phone: Annotated[str, Form()],
     user_repo: Annotated[db.UserRepository, Depends(db.UserRepository)],
+    uf: UserForm = Depends(UserForm),
 ):
-    dbUser = db.User(fname=fname, lname=lname, phone=phone)
+    dbUser = db.User(fname=uf.fname, lname=uf.lname, phone=uf.phone)
     user_repo.insert(dbUser)
     return RedirectResponse(url="/user", status_code=status.HTTP_302_FOUND)
 
