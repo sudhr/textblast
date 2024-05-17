@@ -1,6 +1,8 @@
 from typing import Annotated
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends, Form, Request
+from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
+from starlette import status
 
 import db
 
@@ -21,6 +23,19 @@ def conversation(request: Request):
 @router.get("/user/add")
 def add_user_form(request: Request):
     return templates.TemplateResponse("add_user_form", context={"request": request})
+
+
+@router.post("/user/add")
+def add_user_form_post(
+    request: Request,
+    fname: Annotated[str, Form()],
+    lname: Annotated[str, Form()],
+    phone: Annotated[str, Form()],
+    user_repo: Annotated[db.UserRepository, Depends(db.UserRepository)],
+):
+    dbUser = db.User(fname=fname, lname=lname, phone=phone)
+    user_repo.insert(dbUser)
+    return RedirectResponse(url="/user", status_code=status.HTTP_302_FOUND)
 
 
 @router.get("/user")
