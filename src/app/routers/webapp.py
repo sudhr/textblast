@@ -25,8 +25,8 @@ def add_user_form(request: Request):
 
 @router.get("/user")
 def list_users(
-    request: Request,
     user_repo: Annotated[db.UserRepository, Depends(db.UserRepository)],
+    request: Request,
 ):
     users = user_repo.get_all()
     return templates.TemplateResponse(

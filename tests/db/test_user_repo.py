@@ -28,3 +28,9 @@ def test_add_user(user_repo: UserRepository) -> None:
     user_created = user_repo.insert(user)
     assert_that(user_created.phone).is_equal_to(phone)
     assert_that(user_created.id).is_greater_than(0)
+
+
+def test_get_all_users(user_repo: UserRepository) -> None:
+    users = user_repo.get_all()
+    assert_that(users).is_not_empty()
+    assert_that(len(users)).is_greater_than(0)
