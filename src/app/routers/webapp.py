@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import APIRouter, Depends, Form, Request
+from fastapi import APIRouter, Depends, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from starlette import status
@@ -33,10 +33,14 @@ async def add_user_form_post(
     uf: UserForm = Depends(UserForm),
 ):
     dbUser = db.User(fname=uf.fname, lname=uf.lname, phone=uf.phone)
+    # try:
     new_user = user_repo.insert(dbUser)
     return RedirectResponse(
-        url="/user?sel_user=" + str(new_user.id) + "", status_code=status.HTTP_302_FOUND
+        url="/user?sel_user=" + str(new_user.id) + "",
+        status_code=status.HTTP_302_FOUND,
     )
+    # except Exception as e:
+    #     print(e)
 
 
 @router.get("/user")

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %} Oops! {% endblock %}
+
+{% block content %}
+<h1>Error while processing data</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col font-monospace">{{ exc }}</div>
+    </div>
+</div>
+{% endblock %}
