@@ -12,35 +12,38 @@ templates = Jinja2Templates(directory="src/app/templates")
 
 
 @router.get("/")
-def index(request: Request):
+async def index(request: Request):
     return templates.TemplateResponse("home", context={"request": request})
 
 
 @router.get("/conversation")
-def conversation(request: Request):
+async def conversation(request: Request):
     return templates.TemplateResponse("conversation", context={"request": request})
 
 
 @router.get("/user/add")
-def add_user_form(request: Request):
+async def add_user_form(request: Request):
     return templates.TemplateResponse("add_user_form", context={"request": request})
 
 
 @router.post("/user/add")
-def add_user_form_post(
+async def add_user_form_post(
     request: Request,
     user_repo: Annotated[db.UserRepository, Depends(db.UserRepository)],
     uf: UserForm = Depends(UserForm),
 ):
     dbUser = db.User(fname=uf.fname, lname=uf.lname, phone=uf.phone)
-    user_repo.insert(dbUser)
-    return RedirectResponse(url="/user", status_code=status.HTTP_302_FOUND)
+    new_user = user_repo.insert(dbUser)
+    return RedirectResponse(
+        url="/user?sel_user=" + str(new_user.id) + "", status_code=status.HTTP_302_FOUND
+    )
 
 
 @router.get("/user")
-def list_users(
+async def list_users(
     user_repo: Annotated[db.UserRepository, Depends(db.UserRepository)],
     request: Request,
+    sel_user: int = 0,
 ):
     users = user_repo.get_all()
     return templates.TemplateResponse(
@@ -48,5 +51,6 @@ def list_users(
         context={
             "request": request,
             "users": users,
+            "sel_user": sel_user,
         },
     )

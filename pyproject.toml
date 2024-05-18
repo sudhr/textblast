@@ -11,13 +11,13 @@ description = "Text Blaster"
 version = "0.1.0"
 # dynamic = ["version", "description"]
 dependencies = [
-    "alembic",
-    "fastapi",
-    "openapi",
-    "pandas",
-    "sqlalchemy",
-    "vonage",
-    "psycopg2-binary",
+  "alembic",
+  "fastapi",
+  "openapi",
+  "pandas",
+  "sqlalchemy[asyncio]",
+  "vonage",
+  "psycopg2-binary",
 ]
 
 # [tool.setuptools]
@@ -33,9 +33,7 @@ pythonpath = ["src"]
 testpaths = ["tests"]
 
 [tool.ruff]
-exclude = [
-  "old",
-]
+exclude = ["old"]
 
 # Formatting
 line-length = 88
@@ -51,4 +49,3 @@ indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
 docstring-code-line-length = "dynamic"
-
