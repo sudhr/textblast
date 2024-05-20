@@ -1,11 +1,13 @@
-from .database import SessionLocal, Base, get_db
-from .repo import UserRepository
-from .models import User
+from .database import Base, SessionLocal, get_db
+from .models import Campaign, User
+from .repo import CampaignRepository, UserRepository
 
 __all__ = [
     "Base",
     "SessionLocal",
     "get_db",
-    "UserRepository",
     "User",
+    "Campaign",
+    "UserRepository",
+    "CampaignRepository",
 ]

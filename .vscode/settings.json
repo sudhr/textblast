@@ -11,6 +11,16 @@
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
     "ruff.format.args": [
-        "--force-exclude old/"
-    ]
+        "--force-exclude old/",
+        "--check",
+        "--fix",
+    ],
+    "ruff.lint.args": [
+        "--config=pyproject.toml"
+    ],
+    "ruff.lint.run": "onSave",
+    "ruff.showNotifications": "onWarning",
+    "ruff.trace.server": "messages",
+    "ruff.importStrategy": "useBundled",
+    "editor.defaultFormatter": "charliermarsh.ruff"
 }

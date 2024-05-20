@@ -1,6 +1,7 @@
-from assertpy import assert_that
-import string
 import random
+import string
+
+from assertpy import assert_that
 from db.models import User
 from db.repo import UserRepository
 

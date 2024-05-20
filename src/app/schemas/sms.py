@@ -1,6 +1,5 @@
 from pydantic import BaseModel, Field
 
-
 #
 # Allowed phone number formats:
 # * +14255551212

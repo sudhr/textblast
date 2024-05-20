@@ -1,7 +1,8 @@
-from fastapi.testclient import TestClient
-import pytest
 from http import HTTPStatus
+
+import pytest
 from assertpy import assert_that
+from fastapi.testclient import TestClient
 
 WEBHOOK_URL = "/api/webhook"
 

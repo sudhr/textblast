@@ -1,12 +1,12 @@
-import pytest
 from typing import Generator, TypeVar
+
+import pytest
+from app.main import app
+from db import models
+from db.database import SessionLocal, engine
+from db.repo import CampaignRepository, UserRepository
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
-
-from db.database import SessionLocal, engine
-from db import models
-from db.repo import UserRepository
-from app.main import app
 
 
 @pytest.fixture
@@ -40,3 +40,8 @@ def db_conn_string() -> str:
 @pytest.fixture
 def user_repo(session: Session) -> UserRepository:
     return UserRepository(session)
+
+
+@pytest.fixture
+def campaign_repo(session: Session) -> CampaignRepository:
+    return CampaignRepository(session)

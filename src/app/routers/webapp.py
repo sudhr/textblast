@@ -1,11 +1,11 @@
 from typing import Annotated
+
+import db
+from app.schemas import UserForm
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from starlette import status
-
-from app.schemas import UserForm
-import db
 
 router = APIRouter(prefix="", tags=["webapp"])
 templates = Jinja2Templates(directory="src/app/templates")
@@ -57,4 +57,27 @@ async def list_users(
             "users": users,
             "sel_user": sel_user,
         },
+    )
+
+
+@router.get("/campaign")
+async def list_campaigns(request: Request):
+    campaigns = None
+    return templates.TemplateResponse(
+        "list_campaigns", context={"request": request, "campaigns": campaigns}
+    )
+
+
+@router.get("/user/{campaign_id}")
+async def show_campaign(request: Request, campaign_id: int):
+    campaign = None
+    return templates.TemplateResponse(
+        "campaign/show_campaign", context={"request": request, "campaign": campaign}
+    )
+
+
+@router.get("/campaign/new")
+async def add_campaign_form(request: Request):
+    return templates.TemplateResponse(
+        "campaign/new_campaign_form", context={"request": request}
     )

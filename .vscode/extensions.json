@@ -3,7 +3,6 @@
         "mikoz.black-py",
         "ms-python.python",
         "ms-python.debugpy",
-        "ms-python.black-formatter",
         "njpwerner.autodocstring",
         "wholroyd.jinja",
         "charliermarsh.ruff"

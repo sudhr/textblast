@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Depends, Response, status
 from typing import Annotated
+
 import db
+from fastapi import APIRouter, Depends, Response, status
 
 from ..schemas import SMS
-
 
 router = APIRouter(
     prefix="/api",
