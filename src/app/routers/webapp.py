@@ -64,7 +64,7 @@ async def list_users(
 async def list_campaigns(request: Request):
     campaigns = None
     return templates.TemplateResponse(
-        "list_campaigns", context={"request": request, "campaigns": campaigns}
+        "campaign/list_campaigns", context={"request": request, "campaigns": campaigns}
     )
 
 
