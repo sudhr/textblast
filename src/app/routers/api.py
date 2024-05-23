@@ -1,9 +1,10 @@
 from typing import Annotated
 
-import db
 from fastapi import APIRouter, Depends, Response, status
 
-from ..schemas import SMS
+from src.db import UserRepository
+
+from ..schemas.sms import SMS
 
 router = APIRouter(
     prefix="/api",
@@ -14,7 +15,7 @@ router = APIRouter(
 @router.post("/webhook")
 async def webhook(
     sms: SMS,
-    user_repo: Annotated[db.UserRepository, Depends(db.UserRepository)],
+    user_repo: Annotated[UserRepository, Depends(UserRepository)],
     resp: Response,
 ):
     user = user_repo.get_by_phone(sms.phone)

@@ -4,7 +4,7 @@
 {% block content %}
 <h1>New Campaign</h1>
 <br/>
-<form class="row g-3" action="/user/add" method="post">
+<form class="row g-3" action="{{ url_for('new_campaign_form') }}" method="post">
     <div class="row mb-3">
         <label class="col-form-label col-sm-2" for="fname">Campaign Name:</label>
         <div class="col-sm-10">

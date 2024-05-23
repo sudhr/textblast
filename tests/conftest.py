@@ -2,9 +2,8 @@ from typing import Generator, TypeVar
 
 import pytest
 from app.main import app
-from db import models
+from db import CampaignRepository, UserRepository, models
 from db.database import SessionLocal, engine
-from db.repo import CampaignRepository, UserRepository
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
 
@@ -33,7 +32,6 @@ def session() -> YieldFixture[Session]:
 
 @pytest.fixture
 def db_conn_string() -> str:
-    # return "sqlite:///./data/db.sqlite3"
     return "postgresql://postgres:postgres@localhost:5432/postgres"
 
 
