@@ -25,7 +25,7 @@ dependencies = [
 
 [project.optional-dependencies]
 test = ["pytest", "assertpy", "httpx", "coverage"]
-dev = ["black", "ruff"]
+dev = ["ruff", "mypy"]
 
 [tool.pytest.ini_options]
 # rootdir = "."

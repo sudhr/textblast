@@ -2,8 +2,8 @@ import random
 import string
 
 from assertpy import assert_that
-from db import UserRepository
-from db.models import User
+from tb_storage import UserRepository
+from tb_storage.models import User
 
 
 def test_get_user_phone_exists(user_repo: UserRepository) -> None:

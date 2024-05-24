@@ -1,8 +1,8 @@
-import db
+import tb_storage
 from assertpy import assert_that
 
 
-def test_campaign_by_id(campaign_repo: db.CampaignRepository) -> None:
+def test_campaign_by_id(campaign_repo: tb_storage.CampaignRepository) -> None:
     cid = 2
     campaign = campaign_repo.get_by_id(cid)
 

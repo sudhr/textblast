@@ -1,12 +1,11 @@
 from typing import Annotated, List
 
+import tb_storage
 from app.schemas.user import UserForm
 from fastapi import APIRouter, Depends, File, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from starlette import status
-
-import src.db as db
 
 from ..schemas.campaign import NewCampaignForm
 
@@ -47,10 +46,10 @@ async def add_user_form(request: Request):
 @router.post("/user/add")
 async def add_user_form_post(
     request: Request,
-    user_repo: Annotated[db.UserRepository, Depends(db.UserRepository)],
+    user_repo: Annotated[tb_storage.UserRepository, Depends(tb_storage.UserRepository)],
     uf: UserForm = Depends(UserForm),
 ):
-    dbUser = db.User(fname=uf.fname, lname=uf.lname, phone=uf.phone)
+    dbUser = tb_storage.User(fname=uf.fname, lname=uf.lname, phone=uf.phone)
     # try:
     new_user = user_repo.insert(dbUser)
     return RedirectResponse(
@@ -63,7 +62,7 @@ async def add_user_form_post(
 
 @router.get("/user")
 async def list_users(
-    user_repo: Annotated[db.UserRepository, Depends(db.UserRepository)],
+    user_repo: Annotated[tb_storage.UserRepository, Depends(tb_storage.UserRepository)],
     request: Request,
     sel_user: int = 0,
 ):
@@ -86,9 +85,11 @@ async def list_users(
 @router.get("/campaign")
 async def list_campaigns(
     request: Request,
-    campaign_repo: Annotated[db.CampaignRepository, Depends(db.CampaignRepository)],
+    campaign_repo: Annotated[
+        tb_storage.CampaignRepository, Depends(tb_storage.CampaignRepository)
+    ],
 ):
-    campaigns: List[db.Campaign] = campaign_repo.get_all()
+    campaigns: List[tb_storage.Campaign] = campaign_repo.get_all()
     return templates.TemplateResponse(
         "campaign/list_campaigns", context={"request": request, "campaigns": campaigns}
     )
@@ -104,12 +105,14 @@ async def new_campaign_form(request: Request):
 @router.post("/campaign/new")
 async def new_campaign_form_post(
     request: Request,
-    campaign_repo: Annotated[db.CampaignRepository, Depends(db.CampaignRepository)],
+    campaign_repo: Annotated[
+        tb_storage.CampaignRepository, Depends(tb_storage.CampaignRepository)
+    ],
     csv_file: Annotated[bytes, File()],
     ncf: NewCampaignForm = Depends(NewCampaignForm),
 ):
     # Create entry in the database
-    ncam: db.Campaign = db.Campaign(
+    ncam: tb_storage.Campaign = tb_storage.Campaign(
         name=ncf.name,
         description=ncf.description,
         start_date=ncf.start_time,
@@ -126,7 +129,9 @@ async def new_campaign_form_post(
 @router.get("/campaign/{campaign_id}")
 async def show_campaign(
     request: Request,
-    campaign_repo: Annotated[db.CampaignRepository, Depends(db.CampaignRepository)],
+    campaign_repo: Annotated[
+        tb_storage.CampaignRepository, Depends(tb_storage.CampaignRepository)
+    ],
     campaign_id: int,
 ):
     campaign = campaign_repo.get_by_id(campaign_id)

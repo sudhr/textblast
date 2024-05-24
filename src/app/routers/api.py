@@ -1,8 +1,7 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, Response, status
-
-from src.db import UserRepository
+from tb_storage import UserRepository
 
 from ..schemas.sms import SMS
 

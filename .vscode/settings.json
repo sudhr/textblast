@@ -22,5 +22,8 @@
     "ruff.showNotifications": "onWarning",
     "ruff.trace.server": "messages",
     "ruff.importStrategy": "useBundled",
-    "editor.defaultFormatter": "charliermarsh.ruff"
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "mypy.runUsingActiveInterpreter": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true
 }

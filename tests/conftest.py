@@ -2,10 +2,10 @@ from typing import Generator, TypeVar
 
 import pytest
 from app.main import app
-from db import CampaignRepository, UserRepository, models
-from db.database import SessionLocal, engine
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
+from tb_storage import CampaignRepository, UserRepository, models
+from tb_storage.database import SessionLocal, engine
 
 
 @pytest.fixture
