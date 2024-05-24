@@ -37,7 +37,7 @@
                         <li><a class="dropdown-item" href="{{ url_for('add_user_form') }}">Add</a></li>
                         <li><a class="dropdown-item" href="{{ url_for('list_users') }}">List</a></li>
                         <li>
-                            <hr class="dropdown-divider">
+                            <hr class="dropdown-divider"/>
                         </li>
                         <li><a class="dropdown-item" href="#">Delete</a></li>
                     </ul>
@@ -48,9 +48,9 @@
                         Campaign
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ url_for('new_campaign_form') }}">Add</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('new_campaign_form') }}">New</a></li>
                         <li>
-                            <hr class="dropdown-divider">
+                            <hr class="dropdown-divider"/>
                         </li>
                         <li><a class="dropdown-item" href="{{ url_for('list_campaigns') }}">List</a></li>
                     </ul>

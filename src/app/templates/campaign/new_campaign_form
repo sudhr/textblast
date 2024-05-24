@@ -1,5 +1,5 @@
 {% extends "layout" %}
-{% block title %} Add User {% endblock %}
+{% block title %} New Campaign {% endblock %}
 
 {% block content %}
 <h1>New Campaign</h1>
@@ -13,11 +13,20 @@
             </div>
         </div>
     </div>
+
+    <div class="row mb-3">
+        <label class="col-form-label col-sm-2" for="fname">Campaign Description:</label>
+        <div class="col-sm-10">
+            <div class="input-group">
+                <input type="text" class="form-control" id="description" name="description" placeholder="Campaign Description"  required/>
+            </div>
+        </div>
+    </div>
     <div class="row mb-3">
         <label class="col-form-label col-sm-2">Start Time:</label>
         <div class="col-sm-10">
             <div class="input-group">
-                <input type="datetime-local" class="form-control" id="start_time" name="start_time" style="width: auto" required  />
+                <input type="datetime-local" class="form-control" id="start_date" name="start_date" style="width: auto" required  />
             </div>
         </div>
     </div>
@@ -26,7 +35,7 @@
         <label class="col-form-label col-sm-2">End Time:</label>
         <div class="col-sm-10">
             <div class="input-group">
-                <input type="datetime-local" class="form-control" id="end_time" name="end_time" style="width: auto" required  />
+                <input type="datetime-local" class="form-control" id="end_date" name="end_date" style="width: auto" required  />
             </div>
         </div>
     </div>

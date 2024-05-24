@@ -83,28 +83,6 @@ async def list_users(
 #
 
 
-@router.get("/campaign/{campaign_id}")
-async def show_campaign(
-    request: Request,
-    campaign_repo: Annotated[db.CampaignRepository, Depends(db.CampaignRepository)],
-    campaign_id: int,
-):
-    campaign = campaign_repo.get_by_id(campaign_id)
-    if campaign is not None:
-        return templates.TemplateResponse(
-            "campaign/show_campaign", context={"request": request, "campaign": campaign}
-        )
-    else:
-        return templates.TemplateResponse(
-            "error",
-            context={
-                "request": request,
-                "exc": "Campaign not found",
-            },
-            status_code=status.HTTP_400_BAD_REQUEST,
-        )
-
-
 @router.get("/campaign")
 async def list_campaigns(
     request: Request,
@@ -132,9 +110,33 @@ async def new_campaign_form_post(
 ):
     # Create entry in the database
     ncam: db.Campaign = db.Campaign(
-        name=ncf.name, start_time=ncf.start_time, end_time=ncf.end_time
+        name=ncf.name, start_date=ncf.start_time, end_date=ncf.end_time
     )
     cam = campaign_repo.insert(ncam)
     # Parse the CSV file
 
-    return RedirectResponse(url=f"/campaign/{cam.id}", status_code=status.HTTP_200_OK)
+    return RedirectResponse(
+        url=f"/campaign/{cam.id}", status_code=status.HTTP_302_FOUND
+    )
+
+
+@router.get("/campaign/{campaign_id}")
+async def show_campaign(
+    request: Request,
+    campaign_repo: Annotated[db.CampaignRepository, Depends(db.CampaignRepository)],
+    campaign_id: int,
+):
+    campaign = campaign_repo.get_by_id(campaign_id)
+    if campaign is not None:
+        return templates.TemplateResponse(
+            "campaign/show_campaign", context={"request": request, "campaign": campaign}
+        )
+    else:
+        return templates.TemplateResponse(
+            "error",
+            context={
+                "request": request,
+                "exc": "Campaign not found",
+            },
+            status_code=status.HTTP_400_BAD_REQUEST,
+        )
