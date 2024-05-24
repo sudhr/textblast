@@ -28,11 +28,6 @@ async def index(request: Request):
     return templates.TemplateResponse("home", context={"request": request})
 
 
-@router.get("/conversation")
-async def conversation(request: Request):
-    return templates.TemplateResponse("conversation", context={"request": request})
-
-
 #
 # User
 #
@@ -148,3 +143,15 @@ async def show_campaign(
             },
             status_code=status.HTTP_400_BAD_REQUEST,
         )
+
+
+#
+# Conversation
+#
+
+
+@router.get("/conversation")
+async def conversation_lookup(request: Request):
+    return templates.TemplateResponse(
+        "conversation/lookup", context={"request": request}
+    )
