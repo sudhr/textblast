@@ -16,4 +16,4 @@
 * [ ] Convert `Reached` table/model into `Conversations` table/model. This table holds the complete conversation with OpenAI.
 * [ ] Use [Pydantic Logfire](https://pydantic.dev/logfire) for logging and tracing.
 * [ ] Use [Pydantic Validators](https://docs.pydantic.dev/latest/concepts/validators/) to validate input values.
-* [ ] Use custom Postgres schema. See [here](https://stackoverflow.com/questions/73068830/alembic-postgres-how-to-switch-to-another-schema) for more details.
+* [x] Use custom Postgres schema. See [here](https://stackoverflow.com/questions/73068830/alembic-postgres-how-to-switch-to-another-schema) for more details.
