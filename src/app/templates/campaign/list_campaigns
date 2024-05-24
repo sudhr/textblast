@@ -1,5 +1,5 @@
 {% extends "layout" %}
-{% block title %} Users {% endblock %}
+{% block title %} Campaigns {% endblock %}
 
 {% block content %}
 <h1>Campaigns</h1>
@@ -8,18 +8,20 @@
     <thead class="table-dark">
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Campaign Name</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
             <th scope="col">Start Time</th>
             <th scope="col">Eng Time</th>
         </tr>
     </thead>
     <tbody class="table-group-divider">
-        {% for user in users %}
-        <tr {% if user.id==sel_user %}class="table-active table-success" {% endif %}>
-            <th scope="row">{{ user.id }}</th>
-            <td>{{ user.fname }}</td>
-            <td>{{ user.lname }}</td>
-            <td class="font-monospace">{{ user.phone }}</td>
+        {% for campaign in campaigns %}
+        <tr>
+            <th scope="row"><a href="/campaign/{{ campaign.id }}">{{ campaign.id }}</a></th>
+            <td>{{ campaign.name }}</td>
+            <td>{{ campaign.description }}</td>
+            <td>{{  campaign.start_date| datetime_format }}</td>
+            <td>{{  campaign.end_date | datetime_format }}</td>
         </tr>
         {% endfor %}
     </tbody>

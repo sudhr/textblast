@@ -1,6 +1,7 @@
+from datetime import datetime
 from typing import List
 
-from sqlalchemy import Column, ForeignKey, Integer, String, Table
+from sqlalchemy import Column, ForeignKey, Integer, String, Table, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .database import Base
@@ -28,21 +29,16 @@ campaign_user_table = Table(
 
 class Campaign(Base):
     __tablename__ = "campaign"
-    # id = Column(Integer, name="id", primary_key=True, index=True)
-    # name = Column(String, name="name", nullable=False)
-    # description = Column(String, name="description")
-    # start_time = Column(String, name="start_time", nullable=False)
-    # end_time = Column(String, name="end_time", nullable=False)
 
     id: Mapped[int] = mapped_column(Integer, name="id", primary_key=True, index=True)
     name: Mapped[str] = mapped_column(String, name="name", nullable=False)
     description: Mapped[str] = mapped_column(String, name="description")
-    # start_time: Mapped[datetime] = mapped_column(
-    #     DateTime, name="start_time", nullable=False
-    # )
-    # end_time: Mapped[datetime] = mapped_column(
-    #     DateTime, name="end_time", nullable=False
-    # )
+    start_date: Mapped[datetime] = mapped_column(
+        DateTime, name="start_date", nullable=False
+    )
+    end_date: Mapped[datetime] = mapped_column(
+        DateTime, name="end_date", nullable=False
+    )
 
     users: Mapped[List[User]] = relationship(
         secondary=campaign_user_table, lazy="joined"
