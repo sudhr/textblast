@@ -110,7 +110,10 @@ async def new_campaign_form_post(
 ):
     # Create entry in the database
     ncam: db.Campaign = db.Campaign(
-        name=ncf.name, start_date=ncf.start_time, end_date=ncf.end_time
+        name=ncf.name,
+        description=ncf.description,
+        start_date=ncf.start_time,
+        end_date=ncf.end_time,
     )
     cam = campaign_repo.insert(ncam)
     # Parse the CSV file
